@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h2>Lista de Pacientes</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for paciente in pacientes %}
+      <tr>
+        <td>{{ paciente.nome }}</td>
+        <td>{{ paciente.idade }}</td>
+        <td>{{ paciente.telefone }}</td>
+        <td>{{ paciente.endereco }}</td>
+        <td>
+          <a href="{% url 'editar_paciente' paciente.id %}" class="btn btn-warning btn-sm">Editar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

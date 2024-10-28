@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="text-center">Editar Paciente - {{ paciente.nome }}</h2>
+        <form method="post" class="p-4 border rounded shadow-sm bg-light">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <a href="{% url 'buscar_paciente' %}" class="btn btn-secondary mt-2">Cancelar</a>
+                <a href="{% url 'excluir_paciente' paciente.id %}" class="btn btn-danger mt-2" 
+                   onclick="return confirm('Tem certeza que deseja excluir este paciente?');">Excluir</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
